@@ -3,7 +3,11 @@ const { handleActions } = require('redux-actions')
 const ADD_TODO = "todos/ADD_TODO"
 
 const initialState = {
-    todos: []
+    todos: [
+        {value: "test"},
+        {value: "test1"},
+        {value: "test2"},
+    ]
 }
 
 module.exports = {

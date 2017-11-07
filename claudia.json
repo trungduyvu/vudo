@@ -1,0 +1,10 @@
+{
+  "lambda": {
+    "role": "vudo-executor",
+    "name": "vudo",
+    "region": "us-east-1"
+  },
+  "api": {
+    "id": "cy3yk5xwf1"
+  }
+}

@@ -3,8 +3,20 @@
   "version": "1.0.0",
   "description": "Planning app",
   "main": "index.js",
+  "files": [
+    "build"
+  ],
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "yarn dev:start",
+    "dev:start": "nodemon --ignore build --exec babel-node src/server/app",
+    "dev:wds": "webpack-dev-server --progress",
+    "build": "rimraf build && babel src -d build/server --ignore .test.js --ignore client && cross-env NODE_ENV=production webpack -p --progress",
+    "staging:deploy:lambda": "claudia update --version staging",
+    "staging:deploy:s3": "node scripts/s3_deploy.js vudo-staging E2DVHER9VJAT67",
+    "staging:deploy": "yarn build && yarn staging:deploy:lambda && yarn staging:deploy:s3",
+    "prod:deploy:lambda": "claudia update --version staging",
+    "prod:deploy:s3": "node scripts/s3_deploy.js vudo-prod E2DVHER9VJAT67",
+    "prod:deploy": "yarn build && yarn prod:deploy:lambda && yarn prod:deploy:s3"
   },
   "author": "Trung Vu",
   "license": "ISC",
@@ -14,15 +26,23 @@
       "react"
     ]
   },
-  "dependencies": {},
+  "dependencies": {
+    "aws-serverless-express": "^3.0.2",
+    "claudia-api-builder": "^2.5.1",
+    "express": "^4.16.2"
+  },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
+    "claudia": "^2.14.2",
+    "cross-env": "^5.1.1",
     "css-loader": "^0.28.7",
     "html-webpack-plugin": "^2.30.1",
+    "nodemon": "^1.12.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
@@ -30,6 +50,7 @@
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
     "redux-actions": "^2.2.1",
+    "s3": "^4.4.0",
     "style-loader": "^0.18.2",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.8.2"
