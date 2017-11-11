@@ -1,13 +1,19 @@
-const React = require('react')
+/* eslint-disable */
+
+import PropTypes from 'prop-types'
+import React from 'react'
 
 class TodoItem extends React.Component {
     render() {
-        let todo = this.props.todo
+        const { todo } = this.props
         return (
             <li>{todo.value}</li>
         )
-
     }
+}
+
+TodoItem.propTypes = {
+    todo: PropTypes.object.isRequired,
 }
 
 module.exports = TodoItem

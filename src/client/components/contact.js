@@ -1,13 +1,8 @@
 const React = require('react')
 
-class Contact extends React.Component {
-    render() {
-        return (
-            <div>
-                Contact
-            </div>
-        )
-    }
-}
 
-module.exports = Contact
+module.exports = () => (
+    <div>
+        Contact us
+    </div>
+)

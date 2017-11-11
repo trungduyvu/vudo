@@ -1,8 +1,8 @@
 const { combineReducers } = require('redux')
 const {
-    reducer: todos
+    reducer: todos,
 } = require('./todos')
 
 module.exports = combineReducers({
-   todos
-});
+    todos,
+})
