@@ -36,4 +36,16 @@ jobs:
       # run tests!
       - run: yarn test
 
+      # build deployable artifacts
+      - run: yarn build
+
+      # deploy to s3
+      - run: yarn staging:deploy:s3
+
+      # deploy to lambda
+      - run: yarn staging:deploy:lambda
+
+
+
+
 
