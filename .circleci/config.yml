@@ -38,7 +38,7 @@ jobs:
 
       # build deployable artifacts
       - run: yarn build
-  
+
       # deploy to lambda
       - run: yarn staging:deploy:lambda
 
