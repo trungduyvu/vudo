@@ -37,7 +37,14 @@ jobs:
       - run: yarn test
 
       # build deployable artifacts
-      - run: yarn staging:deploy
+      - run: yarn build
+
+      # deploy to s3
+      - run: yarn staging:deploy:s3
+
+      # deploy to lambda
+      - run: claudia update --version staging
+
 
 
 
