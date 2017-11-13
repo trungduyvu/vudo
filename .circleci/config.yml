@@ -41,9 +41,9 @@ jobs:
 
       # deploy to s3
       - run: yarn staging:deploy:s3
-
-      # deploy to lambda
-      - run: claudia update --version staging
+#
+#      # deploy to lambda
+#      - run: claudia update --version staging
 
 
 
