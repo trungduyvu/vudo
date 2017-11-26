@@ -39,7 +39,7 @@ jobs:
       # build deployable artifacts
       - run: yarn build
 
-      - run: npm install -g serverless
+      - run: npm install serverless
 
       # deploy
       - run: yarn staging:deploy
