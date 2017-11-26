@@ -13,10 +13,10 @@
     "dev:start": "nodemon --ignore build --exec babel-node src/server/app",
     "dev:wds": "webpack-dev-server --progress",
     "build": "rimraf build && concurrently \"babel src -d build/server --ignore .test.js --ignore client\" \"cross-env NODE_ENV=production webpack -p --progress\"",
-    "staging:deploy:lambda": "claudia update --version staging",
+    "staging:deploy:lambda": "sls deploy",
     "staging:deploy:s3": "node scripts/s3_deploy.js vudo-staging E2DVHER9VJAT67",
     "staging:deploy": "yarn build && concurrently \"yarn staging:deploy:lambda\" \"yarn staging:deploy:s3\" --kill-others-on-fail",
-    "prod:deploy:lambda": "claudia update --version staging",
+    "prod:deploy:lambda": "sls deploy --stage prod",
     "prod:deploy:s3": "node scripts/s3_deploy.js vudo-prod E2DVHER9VJAT67",
     "prod:deploy": "yarn build && yarn prod:deploy:lambda && yarn prod:deploy:s3"
   },
@@ -40,7 +40,8 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
-    "redux-actions": "^2.2.1"
+    "redux-actions": "^2.2.1",
+    "serverless-http": "^1.5.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

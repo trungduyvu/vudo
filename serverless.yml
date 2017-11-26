@@ -1,0 +1,18 @@
+service: vudo-api
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: staging
+  region: us-east-1
+
+package:
+  exclude:
+  - src/**
+  - build/client/**
+functions:
+  app:
+    handler: build/server/server/app.handler
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'

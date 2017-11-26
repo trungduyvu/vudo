@@ -39,15 +39,7 @@ jobs:
       # build deployable artifacts
       - run: yarn build
 
-      # deploy to s3
-      - run: yarn staging:deploy:s3
-#
-#      # deploy to lambda
-#      - run: claudia update --version staging
+      - run: npm install -g serverless
 
-
-
-
-
-
-
+      # deploy
+      - run: yarn staging:deploy
